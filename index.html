@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovy Gadget Store - Phone Repair & Accessories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Algerian&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --success: #10b981;
+            --whatsapp: #25D366;
+            --call: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e69500;
+        }
+        
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .btn-call {
+            background-color: var(--call);
+        }
+        
+        .btn-call:hover {
+            background-color: #0da271;
+        }
+        
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+        }
+        
+        .btn-extra-large {
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+            scroll-margin-top: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Algerian', serif;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section - sleek glass card */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1598128558393-8ffc423f8f5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            position: relative;
+            color: white;
+            text-align: center;
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(17,24,39,0.6) 0%, rgba(17,24,39,0.55) 40%, rgba(17,24,39,0.6) 100%);
+            z-index: 0;
+        }
+
+        .hero-card {
+            position: relative;
+            z-index: 1;
+            max-width: 880px;
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px 34px;
+            box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+            backdrop-filter: blur(8px) saturate(120%);
+            -webkit-backdrop-filter: blur(8px) saturate(120%);
+            text-align: center;
+            animation: heroFadeUp 700ms ease both;
+        }
+
+        @keyframes heroFadeUp {
+            from { transform: translateY(8px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 14px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.05;
+            color: #fff;
+            font-family: 'Algerian', serif;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            margin-bottom: 22px;
+            color: rgba(255,255,255,0.9);
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .hero .btn.btn-extra-large.btn-secondary {
+            background: linear-gradient(90deg, #f59e0b, #ff7a00);
+            border: none;
+            padding: 14px 36px;
+            font-size: 1.05rem;
+            box-shadow: 0 8px 20px rgba(255,122,0,0.18);
+        }
+
+        .contact-btns {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .contact-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
+
+        @media (max-width: 768px) {
+            .hero { padding: 40px 18px; min-height: 64vh; }
+            .hero-card { padding: 28px; border-radius: 12px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 0.98rem; }
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Promotions Section */
+        .promotions {
+            background-color: var(--light);
+        }
+        
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .promo-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .promo-img {
+            height: 200px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        
+        .promo-content {
+            padding: 20px;
+        }
+        
+        .promo-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .promo-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Products Section */
+        .products-section {
+            background-color: var(--light);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8fafc;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .product-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            font-family: 'Algerian', serif;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .contact-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <div style="width: 50px; height: 50px; background-color: var(--primary); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 10px;">JGS</div>
+                    <h1>Jovy Gadget Store</h1>
+                </a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="repairs.html">Repair Services</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="swaps.html">Swap Deals</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section class="hero" id="home">
+        <div class="hero-card">
+            <div class="container hero-content">
+                <h1>We Fix, You Smile.</h1>
+                <p>Professional phone repair services, quality accessories, and unbeatable deals on new and used devices.</p>
+
+                <!-- Main Action Buttons -->
+                <div class="hero-btns">
+                    <a href="repairs.html" class="btn btn-extra-large btn-secondary">Book an Appointment</a>
+
+                    <div class="contact-btns">
+                        <a href="https://wa.me/256703476257?text=Hello%20Jovy%20Gadget%20Store!%20I%20need%20assistance%20with%20my%20device." class="contact-btn" style="background-color: var(--whatsapp);" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Us
+                        </a>
+                        <a href="tel:+256703476257" class="contact-btn" style="background-color: var(--call);">
+                            <i class="fas fa-phone-alt"></i> Call Us Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive mobile device solutions for all your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Phone Repairs</h3>
+                    <p>Screen replacements, battery swaps, charging port fixes, and more for all major brands.</p>
+                    <a href="repairs.html" class="btn" style="margin-top: 15px; padding: 8px 16px; font-size: 0.9rem;">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>New Phones</h3>
+                    <p>Latest smartphones from top brands with warranty and competitive pricing.</p>
+                    <a href="shop.html" class="btn" style="margin-top: 15px; padding: 8px 16px; font-size: 0.9rem;">Shop Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Accessories</h3>
+                    <p>Cases, chargers, screen protectors, and more to keep your device protected.</p>
+                    <a href="shop.html" class="btn" style="margin-top: 15px; padding: 8px 16px; font-size: 0.9rem;">Browse</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Swap Deals</h3>
+                    <p>Trade in your old device for credit toward a new one or get cash on the spot.</p>
+                    <a href="swaps.html" class="btn" style="margin-top: 15px; padding: 8px 16px; font-size: 0.9rem;">Swap Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="section promotions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Current Promotions</h2>
+                <p>Special offers and discounts available for a limited time</p>
+            </div>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <div class="promo-img" style="background-image: url('screens.png');">
+                        <!-- Screen Replacement Special Image -->
+                    </div>
+                    <div class="promo-content">
+                        <h3>Screen Replacement Special</h3>
+                        <p>Get 20% off on all screen replacements this month. Includes warranty on parts and labor.</p>
+                        <a href="repairs.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <div class="promo-img" style="background-image: url('battery.png');">
+                        <!-- Battery Health Check Image -->
+                    </div>
+                    <div class="promo-content">
+                        <h3>Battery Health Check</h3>
+                        <p>Free battery diagnostics and 15% off on battery replacements for iPhone and Samsung devices.</p>
+                        <a href="repairs.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <div class="promo-img" style="background-image: url('accessories.png');">
+                        <!-- Accessories Bundle Image -->
+                    </div>
+                    <div class="promo-content">
+                        <h3>Accessories Bundle</h3>
+                        <p>Buy any phone and get a case, screen protector, and charger at 50% off.</p>
+                        <a href="shop.html" class="btn">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="section products-section" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+                <p>Check out our popular phone accessories and repair parts</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background = "screens.png"">
+                        <!-- iPhone Screens Image -->
+                    </div>
+                    <div class="product-content">
+                        <h3>iPhone Screens</h3>
+                        <p>High-quality replacement screens for all iPhone models with warranty.</p>
+                        <div class="product-price">
+                            <span class="price">From 280,000 UGX</span>
+                        </div>
+                        <a href="shop.html" class="btn" style="width: 100%; margin-top: 10px;">View Products</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image = "cover.png"">
+                        <!-- Phone Cases Image -->
+                    </div>
+                    <div class="product-content">
+                        <h3>Phone Cases</h3>
+                        <p>Protective and stylish cases for all phone models and brands.</p>
+                        <div class="product-price">
+                            <span class="price">From 12,000 UGX</span>
+                        </div>
+                        <a href="shop.html" class="btn" style="width: 100%; margin-top: 10px;">View Products</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image = "powerbank.png"">
+                        <!-- Power Banks Image -->
+                    </div>
+                    <div class="product-content">
+                        <h3>Power Banks</h3>
+                        <p>High-capacity portable chargers from trusted brands.</p>
+                        <div class="product-price">
+                            <span class="price">From 85,000 UGX</span>
+                        </div>
+                        <a href="shop.html" class="btn" style="width: 100%; margin-top: 10px;">View Products</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('charger.png');">
+                        <!-- Fast Chargers Image -->
+                    </div>
+                    <div class="product-content">
+                        <h3>Fast Chargers</h3>
+                        <p>Original and certified fast chargers for quick device charging.</p>
+                        <div class="product-price">
+                            <span class="price">From 30,000 UGX</span>
+                        </div>
+                        <a href="shop.html" class="btn" style="width: 100%; margin-top: 10px;">View Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Testimonials</h2>
+                <p>See what our satisfied customers have to say about our services</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "My iPhone screen was completely shattered, and Jovy Gadget Store had it looking brand new in under an hour. Professional service and great pricing!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="patience.jpeg" alt="Patience H.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Patience H.</h4>
+                            <p>iPhone 13 Pro Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I was hesitant about getting my Samsung repaired, but their technicians were knowledgeable and fixed my charging port issue quickly. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="original.jpg" alt="Rodney M.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rodney M.</h4>
+                            <p>Samsung S25 Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Great selection of phone cases and accessories at reasonable prices. The staff is friendly and helpful. My go-to shop for all my gadget needs."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src = "founder1.jpg" alt="Grace N.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Grace N.</h4>
+                            <p>Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Jovy Gadget Store</h3>
+                    <p>Your trusted partner for phone repairs, accessories, and new devices in Seguku.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/256703476257" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="repairs.html">Repair Services</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="swaps.html">Swap Deals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="repairs.html">Screen Replacement</a></li>
+                        <li><a href="repairs.html">Battery Replacement</a></li>
+                        <li><a href="repairs.html">Board Level Repair</a></li>
+                        <li><a href="repairs.html">Software Issues</a></li>
+                        <li><a href="shop.html">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Seguku alongside Entebbe Road</li>
+                        <li><i class="fas fa-phone"></i> +256 703 476257</li>
+                        <li><i class="fas fa-envelope"></i> jovygadgets@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM, Sun: 10AM-5PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jovy Gadget Store. All Rights Reserved. | "We Fix, You Smile."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-menu').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

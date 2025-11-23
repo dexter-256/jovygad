@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovy Gadget Store - Swap Deals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Algerian&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --success: #10b981;
+            --whatsapp: #25D366;
+            --call: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e69500;
+        }
+        
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Algerian', serif;
+        }
+        
+        /* Navigation Styles */
+        .main-nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding: 15px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563013541-5b0a8c9d5e3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: 'Algerian', serif;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Swap Form Section */
+        .swap-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-family: 'Algerian', serif;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Form Styles */
+        .swap-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* File Upload Styles */
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 2px dashed #d1d5db;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            flex-direction: column;
+        }
+        
+        .file-upload-label:hover {
+            border-color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+        
+        .file-upload-label i {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-preview {
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .file-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Form Submit */
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Featured Phones Section */
+        .featured-phones {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .phones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .phone-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .phone-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .phone-img {
+            height: 200px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: white;
+        }
+        
+        .phone-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .phone-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .phone-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            font-family: 'Algerian', serif;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .swap-section {
+                padding: 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <div style="width: 50px; height: 50px; background-color: var(--primary); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 10px;">JGS</div>
+                    <h1>Jovy Gadget Store</h1>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="repairs.html">Repair Services</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="swaps.html" class="active">Swap Deals</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Upgrade Your Phone Today!</h1>
+            <p>Trade in your old device and get credit toward a new phone or cash on the spot.</p>
+            <a href="#swap-form" class="btn btn-large btn-secondary">Start Your Swap Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Phones Section -->
+    <section class="featured-phones">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Phones for Swap</h2>
+                <p>Upgrade to these popular devices with our swap program</p>
+            </div>
+            <div class="phones-grid">
+                <div class="phone-card">
+                    <div class="phone-img" style="background-image: url('https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="phone-content">
+                        <h3>iPhone 15 Pro</h3>
+                        <div class="phone-price">From 3,500,000 UGX</div>
+                        <p>Get up to 1,000,000 UGX for your old device</p>
+                    </div>
+                </div>
+                <div class="phone-card">
+                    <div class="phone-img" style="background-image: url('https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="phone-content">
+                        <h3>Samsung Galaxy S24</h3>
+                        <div class="phone-price">From 2,800,000 UGX</div>
+                        <p>Get up to 800,000 UGX for your old device</p>
+                    </div>
+                </div>
+                <div class="phone-card">
+                    <div class="phone-img" style="background-image: url('https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="phone-content">
+                        <h3>Tecno Camon 30</h3>
+                        <div class="phone-price">From 850,000 UGX</div>
+                        <p>Get up to 300,000 UGX for your old device</p>
+                    </div>
+                </div>
+                <div class="phone-card">
+                    <div class="phone-img" style="background-image: url('https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="phone-content">
+                        <h3>Infinix Hot 40</h3>
+                        <div class="phone-price">From 650,000 UGX</div>
+                        <p>Get up to 200,000 UGX for your old device</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swap Form Section -->
+    <section class="swap-section" id="swap-form">
+        <div class="container">
+            <div class="section-title">
+                <h2>Swap Your Phone</h2>
+                <p>Fill in the details about your current device and the phone you want to swap to</p>
+            </div>
+            
+            <form class="swap-form" id="swapDealForm">
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Your Current Device Details</h3>
+                
+                <div class="form-group">
+                    <label for="deviceBrand">Device Brand *</label>
+                    <select id="deviceBrand" class="form-control" required>
+                        <option value="">Select Brand</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Tecno">Tecno</option>
+                        <option value="Infinix">Infinix</option>
+                        <option value="Huawei">Huawei</option>
+                        <option value="Nokia">Nokia</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deviceModel">Device Model *</label>
+                    <input type="text" id="deviceModel" class="form-control" placeholder="e.g., iPhone 13, Samsung A32, Tecno Spark 10" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="storageCapacity">Storage Capacity *</label>
+                        <select id="storageCapacity" class="form-control" required>
+                            <option value="">Select Storage</option>
+                            <option value="16GB">16GB</option>
+                            <option value="32GB">32GB</option>
+                            <option value="64GB">64GB</option>
+                            <option value="128GB">128GB</option>
+                            <option value="256GB">256GB</option>
+                            <option value="512GB">512GB</option>
+                            <option value="1TB">1TB</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="deviceColor">Device Color *</label>
+                        <input type="text" id="deviceColor" class="form-control" placeholder="e.g., Black, White, Blue" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deviceCondition">Device Condition *</label>
+                    <select id="deviceCondition" class="form-control" required>
+                        <option value="">Select Condition</option>
+                        <option value="Excellent">Excellent - Like new, no scratches</option>
+                        <option value="Good">Good - Minor wear, small scratches</option>
+                        <option value="Fair">Fair - Visible scratches, works perfectly</option>
+                        <option value="Poor">Poor - Cracked screen, functional issues</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deviceIssues">Any Known Issues</label>
+                    <textarea id="deviceIssues" class="form-control" placeholder="Describe any problems with your device (battery life, screen issues, etc.)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="purchaseDate">Approximate Purchase Date</label>
+                    <input type="date" id="purchaseDate" class="form-control">
+                </div>
+                
+                <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;">
+                
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Device You Want To Swap To</h3>
+                
+                <div class="form-group">
+                    <label for="desiredBrand">Desired Brand *</label>
+                    <select id="desiredBrand" class="form-control" required>
+                        <option value="">Select Brand</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Tecno">Tecno</option>
+                        <option value="Infinix">Infinix</option>
+                        <option value="Huawei">Huawei</option>
+                        <option value="Nokia">Nokia</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="desiredModel">Desired Model *</label>
+                    <input type="text" id="desiredModel" class="form-control" placeholder="e.g., iPhone 15, Samsung S24, Tecno Camon 30" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="desiredStorage">Desired Storage</label>
+                    <select id="desiredStorage" class="form-control">
+                        <option value="">Any Storage</option>
+                        <option value="64GB">64GB</option>
+                        <option value="128GB">128GB</option>
+                        <option value="256GB">256GB</option>
+                        <option value="512GB">512GB</option>
+                        <option value="1TB">1TB</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budgetRange">Your Budget Range (UGX)</label>
+                    <select id="budgetRange" class="form-control">
+                        <option value="">Select Budget Range</option>
+                        <option value="500000-1000000">500,000 - 1,000,000 UGX</option>
+                        <option value="1000000-2000000">1,000,000 - 2,000,000 UGX</option>
+                        <option value="2000000-3000000">2,000,000 - 3,000,000 UGX</option>
+                        <option value="3000000+">3,000,000+ UGX</option>
+                    </select>
+                </div>
+                
+                <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;">
+                
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Upload Receipt of Your Current Phone</h3>
+                
+                <div class="form-group">
+                    <label>Upload Receipt (Required) *</label>
+                    <div class="file-upload">
+                        <label for="receiptUpload" class="file-upload-label">
+                            <i class="fas fa-receipt"></i>
+                            <span>Click to upload receipt of your current phone</span>
+                            <small style="margin-top: 10px; color: var(--gray);">Accepted formats: JPG, PNG, PDF (Max 5MB)</small>
+                        </label>
+                        <input type="file" id="receiptUpload" class="file-upload-input" accept="image/*,.pdf" required>
+                    </div>
+                    <div class="file-preview" id="receiptPreview">
+                        <img id="receiptPreviewImg" src="" alt="Receipt Preview">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Photos of Your Device (Optional)</label>
+                    <div class="file-upload">
+                        <label for="devicePhotos" class="file-upload-label">
+                            <i class="fas fa-camera"></i>
+                            <span>Click to upload photos of your device</span>
+                            <small style="margin-top: 10px; color: var(--gray);">Front, back, sides, and any damage</small>
+                        </label>
+                        <input type="file" id="devicePhotos" class="file-upload-input" accept="image/*" multiple>
+                    </div>
+                </div>
+                
+                <hr style="margin: 30px 0; border: none; border-top: 1px solid #e5e7eb;">
+                
+                <h3 style="margin-bottom: 20px; color: var(--primary);">Your Contact Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName">Your Name *</label>
+                        <input type="text" id="customerName" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">Phone Number *</label>
+                        <input type="tel" id="customerPhone" class="form-control" placeholder="+256 XXX XXX XXX" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">Email Address</label>
+                    <input type="email" id="customerEmail" class="form-control" placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferredContact">Preferred Contact Method</label>
+                    <select id="preferredContact" class="form-control">
+                        <option value="Phone Call">Phone Call</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                        <option value="Email">Email</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additionalNotes">Additional Notes</label>
+                    <textarea id="additionalNotes" class="form-control" placeholder="Any additional information about your swap request"></textarea>
+                </div>
+                
+                <div class="form-submit">
+                    <button type="submit" class="submit-btn">Submit Swap Request</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Swap With Us?</h2>
+                <p>Experience the benefits of our hassle-free phone swapping service</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Best Value</h3>
+                    <p>Get the highest possible value for your old device with our competitive pricing.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Warranty Included</h3>
+                    <p>All swapped devices come with a warranty for your peace of mind.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Quick Process</h3>
+                    <p>Complete your swap in under 30 minutes with our efficient service.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Hassle-Free</h3>
+                    <p>We handle all the paperwork and data transfer for a seamless experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Jovy Gadget Store</h3>
+                    <p>Your trusted partner for phone repairs, accessories, and new devices in Seguku.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="repairs.html">Repair Services</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="swaps.html">Swap Deals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Seguku alongside Entebbe Road</li>
+                        <li><i class="fas fa-phone"></i> +256 703 476257</li>
+                        <li><i class="fas fa-envelope"></i> jovygadgets@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM-7PM, Sun: 10AM-5PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Jovy Gadget Store. All Rights Reserved. | "We Fix, You Smile."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // File upload preview for receipt
+        document.getElementById('receiptUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('receiptPreview');
+                    const previewImg = document.getElementById('receiptPreviewImg');
+                    
+                    // Only show preview for image files
+                    if (file.type.startsWith('image/')) {
+                        previewImg.src = e.target.result;
+                        preview.style.display = 'block';
+                    } else {
+                        // For PDF files, show a placeholder
+                        previewImg.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRTVFN0VCIi8+CjxwYXRoIGQ9Ik01MCA1MEgxNTBWMTUwSDUwVjUwWiIgZmlsbD0iIzlDQTNBRiIvPgo8cGF0aCBkPSJNNjUgODVWMTE1SDEzNVY4NUg2NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03MCAxMDBIMTMwVjEwNUg3MFYxMDBaIiBmaWxsPSIjOUNBM0FGIi8+CjxwYXRoIGQ9Ik03MCAxMTBIMTMwVjExNUg3MFYxMTBaIiBmaWxsPSIjOUNBM0FGIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUNBM0FGIiBmb250LXNpemU9IjE0IiBmb250LWZhbWlseT0iQXJpYWwiPlBvcnRhYmxlIERvY3VtZW50IEZvcm1hdDwvdGV4dD4KPC9zdmc+';
+                        preview.style.display = 'block';
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submission
+        document.getElementById('swapDealForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const deviceBrand = document.getElementById('deviceBrand').value;
+            const deviceModel = document.getElementById('deviceModel').value;
+            const storageCapacity = document.getElementById('storageCapacity').value;
+            const deviceCondition = document.getElementById('deviceCondition').value;
+            const desiredBrand = document.getElementById('desiredBrand').value;
+            const desiredModel = document.getElementById('desiredModel').value;
+            const customerName = document.getElementById('customerName').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const receiptUpload = document.getElementById('receiptUpload').files[0];
+            
+            // Simple validation
+            if (!deviceBrand || !deviceModel || !storageCapacity || !deviceCondition || 
+                !desiredBrand || !desiredModel || !customerName || !customerPhone || !receiptUpload) {
+                alert('Please fill in all required fields and upload your receipt.');
+                return;
+            }
+            
+            // In a real implementation, you would send this data to your server
+            alert('Thank you! Your swap request has been submitted. We will contact you shortly with a valuation.');
+            
+            // Reset form
+            this.reset();
+            document.getElementById('receiptPreview').style.display = 'none';
+        });
+
+        // Scroll to form when clicking the CTA button
+        document.querySelector('a[href="#swap-form"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('swap-form').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
